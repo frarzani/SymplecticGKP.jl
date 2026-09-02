@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the paper."
+title: "SymplecticGKP"
+abstract: >-
+  Pure-Julia tools for multi-mode Gottesman–Kitaev–Preskill (GKP) codes:
+  integer symplectic canonical forms, invariant-factor balancing, a
+  dimension-reduction pipeline turning classical low-density lattice codes into
+  single-qubit GKP codes, and distance / logical-error-probability (Voronoi)
+  computations.
+type: software
+authors:
+  - family-names: Arzani
+    given-names: Francesco
+  - family-names: Hillmann
+    given-names: Timo
+license: GPL-3.0-or-later
+repository-code: "https://github.com/frarzani/SymplecticGKP.jl"
+references:
+  - type: article
+    title: "Quantum low-density lattice codes"
+    authors:
+      - family-names: Hillmann
+        given-names: Timo
+      - family-names: Eisert
+        given-names: Jens
+      - family-names: Arzani
+        given-names: Francesco
+    year: 2026
+    url: "https://arxiv.org/abs/2609.03021"
+    identifiers:
+      - type: other
+        value: "arXiv:2609.03021"
+        description: "arXiv preprint"
+      - type: doi
+        value: "10.48550/arXiv.2609.03021"
+        description: "arXiv DOI"

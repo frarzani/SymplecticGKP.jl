@@ -1,0 +1,45 @@
+name = "SymplecticGKP"
+uuid = "bc07171d-dfe2-4e3b-b36f-350cc85986d6"
+authors = ["Francesco Arzani", "Timo Hillmann"]
+version = "0.2.0"
+
+[deps]
+Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+LatticeAlgorithms = "a78adfda-4fd7-4d44-a8dc-283d2f23e82b"
+LatticeDecoder = "0e212fe5-0191-42a4-a4df-cda88f5f21dc"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+Nemo = "2edaba10-b0f1-5616-af89-8c11ac63239a"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Primes = "27ebfcd6-29c5-5fa9-bf4b-fb8fc14df3ae"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[sources]
+# LatticeDecoder is used only for classical-LDLC generation; depending on it pulls
+# Oscar/Nemo, so the first precompile is heavy — instantiate once up front (on a
+# login node before cluster runs). Pinned to the squashed v0.1.0 public release
+# (single commit "Prepare v0.1.0 public paper release"); the classical_ldlc source
+# we use is byte-identical to the earlier submission commit.
+LatticeDecoder    = {rev = "a10a798e47a920290428225da94a90edf841a7c0", url = "https://github.com/timohillmann/LatticeDecoder.jl.git"}
+# Julia does NOT transitively resolve a git dependency's own [sources], so we must
+# re-declare the LatticeAlgorithms git source here as well. This matches the exact
+# commit LatticeDecoder's v0.1.0 release itself pins.
+LatticeAlgorithms = {rev = "152d72e1e0195ab14dde0679abf2a5b6b8288a1d", url = "https://github.com/amazon-science/LatticeAlgorithms.jl.git"}
+
+[compat]
+Combinatorics = "1"
+JLD2 = "0.4"
+LatticeAlgorithms = "0.1"
+LatticeDecoder = "0.1"
+Nemo = "0.56"
+Primes = "0.5"
+julia = "1.11"   # [sources] requires ≥ 1.11 (dev machine runs 1.12)
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
